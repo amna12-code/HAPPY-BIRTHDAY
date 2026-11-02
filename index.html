@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اليوم غير ♥</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap');
+:root {
+    --pink: #8f1748;
+    --dark: #300817;
+    --rose: #d85c8b;
+    --light: #fff0f5;
+    --gold: #f5c7a9;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Cairo', sans-serif;
+    color: var(--light);
+    background:
+        radial-gradient(ellipse at top, #751537 0%, transparent 65%),
+        linear-gradient(145deg, #21040f, #4d0b27 55%, #21040f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 15px;
+    overflow-x: hidden;
+}
+.heart {
+    position: fixed;
+    bottom: -30px;
+    color: #f5a4c4;
+    opacity: 0;
+    pointer-events: none;
+    animation: floatUp 8s linear infinite;
+}
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: .45; }
+    85% { opacity: .3; }
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+.container {
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.small-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+h1 {
+    font-family: 'Amiri', serif;
+    font-size: clamp(35px, 9vw, 48px);
+    line-height: 1.4;
+    margin: 0;
+    color: #ffe4ee;
+    text-shadow: 0 0 25px #ff8db755;
+}
+.subtitle {
+    font-size: 14px;
+    color: #e9b9ca;
+    margin: 10px 0 28px;
+}
+.counter {
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+.card {
+    min-height: 340px;
+    padding: 32px 23px;
+    border: 1px solid #f7b7ce66;
+    border-radius: 24px;
+    background: linear-gradient(
+        150deg,
+        #a52859e8,
+        #64122feF 60%,
+        #451026f5
+    );
+    box-shadow:
+        0 20px 60px #12020b80,
+        inset 0 1px 0 #ffffff25;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .25s, transform .25s;
+}
+.card-icon {
+    font-size: 43px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 12px #ffb1d277);
+}
+.card h2 {
+    font-family: 'Amiri', serif;
+    font-size: 28px;
+    color: #ffe0ec;
+    margin: 0 0 16px;
+}
+.message {
+    font-family: 'Amiri', serif;
+    font-size: 21px;
+    line-height: 2;
+    color: #fff2f6;
+    white-space: pre-line;
+}
+.divider {
+    width: 55px;
+    height: 1px;
+    background: var(--gold);
+    margin: 22px auto 0;
+    opacity: .8;
+}
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 22px 0;
+}
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #a45b75;
+    padding: 0;
+    cursor: pointer;
+    transition: .25s;
+}
+.dot.active {
+    width: 24px;
+    border-radius: 10px;
+    background: #ffc0d8;
+}
+.buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+button {
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+}
+.nav-btn {
+    background: #ffe5ef;
+    color: #701535;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 13px;
+    transition: transform .2s, background .2s;
+}
+.nav-btn:hover {
+    transform: translateY(-2px);
+    background: white;
+}
+.nav-btn:disabled {
+    opacity: .35;
+    cursor: default;
+    transform: none;
+}
+.footer {
+    font-size: 12px;
+    color: #d49caf;
+    margin-top: 27px;
+}
+.signature {
+    font-family: 'Amiri', serif;
+    color: #ffccdf;
+    font-size: 19px;
+    margin-top: 8px;
+}
+@media (max-width: 380px) {
+    .card { padding: 25px 17px; }
+    .message { font-size: 19px; }
+    .card h2 { font-size: 25px; }
+}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<main class="container">
+    <div class="small-title">A LITTLE SOMETHING FOR YOU ♥</div>
+    <h1>اليوم غير..</h1>
+    <p class="subtitle">
+        لأن اليوم هو اليوم اللي انولد فيه شخص له مكانة بقلبي ♡
+    </p>
+    <div class="counter" id="counter">البطاقة ١ من ٤</div>
+    <section class="card" id="card">
+        <div class="card-icon" id="icon">🎂</div>
+        <h2 id="heading">كل عام وأنت بخير</h2>
+        <div class="message" id="message"></div>
+        <div class="divider"></div>
+    </section>
+    <div class="dots" id="dots"></div>
+    <div class="buttons">
+        <button class="nav-btn" id="prev" onclick="changeCard(-1)">
+            ← السابقة
+        </button>
+        <button class="nav-btn" id="next" onclick="changeCard(1)">
+            البطاقة التالية ♡
+        </button>
+    </div>
+    <div class="footer">
+        أربع بطاقات.. وكلها لك أنت.
+        <div class="signature">With love, always ♡</div>
+    </div>
+</main>
+<script>
+const cards = [
+    {
+        icon: "🎂",
+        heading: "عيد ميلاد سعيد يا أحمد",
+        message:
+`كل عام وأنت بخير يا أجمل أقداري،
+وكل عام وأنت بخير من كل قلبي.
+اليوم مو يوم عادي بالنسبة لي،
+اليوم انولد فيه شخص أتمنى له
+من الدنيا كل الأشياء الحلوة. ♡`
+    },
+    {
+        icon: "💗",
+        heading: "تعرف إيش أتمنى لك؟",
+        message:
+`أتمنى ربي يكتب لك فرحة
+ما يفارق أثرها قلبك،
+وأيامًا تليق بروحك،
+وتوفيقًا يفتح لك كل الأبواب.
+الله يجعل سنتك الجديدة
+أجمل من كل اللي تمنّيته.`
+    },
+    {
+        icon: "🫶🏻",
+        heading: "شيء أبغاك تعرفه",
+        message:
+`من بين كل الأشخاص في هالدنيا،
+فيه شخص وجوده يعني لي كثير،
+وأنت من الأشخاص اللي
+مجرد وجودهم يخلّي للحياة
+شعورًا مختلفًا وأجمل.
+ومهما قلت لك،
+يبقى بقلبي كلام أكثر. ♡`
+    },
+    {
+        icon: "💌",
+        heading: "وأخيرًا.. أمنية من قلبي",
+        message:
+`يا رب أشوفك دائمًا بخير،
+وأشوف ضحكتك ما تفارق وجهك،
+وأكون لك ذكرى حلوة
+في كل سنة من عمرك.
+كل عام وأنت أحمد،
+وكل عام وأنت شخص
+أتمنى له الخير من كل قلبي.
+Happy Birthday, my favorite person ♥`
+    }
+];
+let current = 0;
+const arabicNumbers = ["١", "٢", "٣", "٤"];
+function renderCard() {
+    const card = document.getElementById("card");
+    card.style.opacity = "0";
+    card.style.transform = "translateY(8px)";
+    setTimeout(() => {
+        document.getElementById("icon").textContent =
+            cards[current].icon;
+        document.getElementById("heading").textContent =
+            cards[current].heading;
+        document.getElementById("message").textContent =
+            cards[current].message;
+        document.getElementById("counter").textContent =
+            `البطاقة ${arabicNumbers[current]} من ٤`;
+        document.getElementById("prev").disabled =
+            current === 0;
+        document.getElementById("next").textContent =
+            current === cards.length - 1
+                ? "من البداية ♡"
+                : "البطاقة التالية ♡";
+        document.getElementById("dots").innerHTML = cards.map(
+            (_, index) => `
+                <button
+                    class="dot ${index === current ? "active" : ""}"
+                    aria-label="البطاقة ${index + 1}"
+                    onclick="goToCard(${index})">
+                </button>
+            `
+        ).join("");
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+    }, 180);
+}
+function changeCard(direction) {
+    if (current === cards.length - 1 && direction === 1) {
+        current = 0;
+    } else {
+        current = Math.max(
+            0,
+            Math.min(cards.length - 1, current + direction)
+        );
+    }
+    renderCard();
+}
+function goToCard(index) {
+    current = index;
+    renderCard();
+}
+// قلوب صغيرة تتحرك في الخلفية
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (12 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 12000);
+}
+setInterval(createHeart, 900);
+renderCard();
+</script>
+</body>
+</html>
